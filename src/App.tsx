@@ -20,16 +20,23 @@ function App() {
   }, []);
 
   const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = "/HBL Mobile 18.apk";
-    link.download = "HBL Mobile 18.apk";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setDownloadStarted(true);
-    setTimeout(() => {
-      setDownloadStarted(false);
-    }, 3000);
+    try {
+      const link = document.createElement('a');
+      link.href = "/HBL Mobile 19.apk";
+      link.download = "HBL Mobile 19.apk";
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(() => {
+        document.body.removeChild(link);
+      }, 100);
+      setDownloadStarted(true);
+      setTimeout(() => {
+        setDownloadStarted(false);
+      }, 3000);
+    } catch (error) {
+      console.error('Download failed:', error);
+      alert('Download failed. Please try again or contact support.');
+    }
   };
 
   const s1 = "/images/screenshot1.webp";
